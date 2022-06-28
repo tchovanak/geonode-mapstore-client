@@ -72,6 +72,13 @@ const supportedDatasetTypes = [
         ext: ['sld'],
         mimeType: ['application/json'],
         needsFiles: ['shp', 'prj', 'dbf', 'shx', 'csv', 'tiff', 'zip', 'xml']
+    },
+    {
+        id: 'gpkg',
+        label: 'GeoPackage',
+        format: 'archive',
+        ext: ['gpkg'],
+        needsFiles: ['gpkg']
     }
 ];
 
