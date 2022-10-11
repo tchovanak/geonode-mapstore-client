@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "compile": "mapstore-project compile && node postCompile && npm run docs",
+    "compile": "mapstore-project compile && node postCompile ",
     "start": "mapstore-project start",
     "test": "mapstore-project test",
     "test:watch": "mapstore-project test:watch",
@@ -33,12 +33,15 @@
   "dependencies": {
     "@react-three/drei": "8.6.1",
     "@react-three/fiber": "7.0.25",
+    "deconstruct-number-format": "^0.0.1",
     "dompurify": "2.2.6",
     "font-awesome": "4.7.0",
+    "format-number-with-string": "^0.0.2",
     "mapstore": "file:MapStore2",
     "react-helmet": "6.1.0",
     "react-intl": "2.3.0",
-    "three": "0.136.0"
+    "three": "0.136.0",
+    "webpack": "^5.9.0"
   },
   "mapstore": {
     "output": "dist",
