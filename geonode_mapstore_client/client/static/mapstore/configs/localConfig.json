@@ -953,6 +953,10 @@
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
                         },
                         {
+                            "type": "plugin",
+                            "name": "StationingLocator"
+                        },
+                        {
                             "type": "divider",
                             "authenticated": true
                         },
@@ -1032,6 +1036,9 @@
             },
             {
                 "name": "DeleteResource"
+            },
+            {
+                "name": "StationingLocator"
             },
             {
                 "name": "Map",
@@ -1745,6 +1752,10 @@
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
                         },
                         {
+                            "type": "plugin",
+                            "name": "StationingLocator"
+                        },
+                        {
                             "type": "divider",
                             "authenticated": true
                         },
@@ -1777,6 +1788,9 @@
             },
             {
                 "name": "DeleteResource"
+            },
+            {
+                "name": "StationingLocator"
             },
             {
                 "name": "DetailViewer",
@@ -2298,6 +2312,10 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
+                        },
+                        {
+                            "type": "plugin",
+                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2320,6 +2338,9 @@
             },
             {
                 "name": "DeleteResource"
+            },
+            {
+                "name": "StationingLocator"
             },
             {
                 "name": "GeoStory",
@@ -2480,6 +2501,10 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
+                        },
+                        {
+                            "type": "plugin",
+                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2506,6 +2531,9 @@
             },
             {
                 "name": "DeleteResource"
+            },
+            {
+                "name": "StationingLocator"
             },
             {
                 "name": "Save"
@@ -2593,6 +2621,9 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
+                        },
+                        {
+                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2615,6 +2646,9 @@
             },
             {
                 "name": "DeleteResource"
+            },
+            {
+                "name": "StationingLocator"
             },
             {
                 "name": "Save"

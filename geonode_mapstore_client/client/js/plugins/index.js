@@ -404,6 +404,10 @@ export const plugins = {
         'DeleteResource',
         () => import(/* webpackChunkName: 'plugins/delete-resource-plugin' */ '@js/plugins/DeleteResource')
     ),
+    StationingLocatorPlugin: toLazyPlugin(
+        'StationingLocator',
+        () => import(/* webpackChunkName: 'plugins/delete-resource-plugin' */ '@js/plugins/StationingLocator')
+    ),
     DownloadResourcePlugin: toLazyPlugin(
         'DownloadResource',
         () => import(/* webpackChunkName: 'plugins/download-resource-plugin' */ '@js/plugins/DownloadResource')
