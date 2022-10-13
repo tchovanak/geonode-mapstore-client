@@ -24,11 +24,15 @@ import './StationingLocator.css';
 import { projectionSelector } from '../../MapStore2/web/client/selectors/map';
 
 import Rx from "rxjs";
+import {delay, take} from "rxjs";
 
 import  { changeMousePointer }  from '../../MapStore2/web/client/actions/map';
 import  axios from '../../MapStore2/web/client/libs/ajax';
 import { Glyphicon } from 'react-bootstrap';
-import { showMapinfoMarker, hideMapinfoMarker} from '../../MapStore2/web/client/actions/mapInfo';
+import { showMapinfoMarker, hideMapinfoMarker, updateFeatureInfoClickPoint, closeIdentify, toggleMapInfoState, changeMapInfoState, setShowInMapPopup, featureInfoClick, clickPoint} from '../../MapStore2/web/client/actions/mapInfo';
+import { toggleHighlightFeature } from '../../MapStore2/web/client/actions/mapInfo';
+import { toggleControl } from '@mapstore/framework/actions/controls';
+import { updatePointWithGeometricFilter } from '@mapstore/framework/utils/IdentifyUtils';
 
 const SHOWSTATIONING = "STATIONING_LOCATOR:SHOWSTATIONING_DIALOG";
 const HIDESTATIONING = "STATIONING_LOCATOR:HIDESTATIONING_DIALOG";
@@ -129,11 +133,10 @@ const StationingButton = ({
 
     return (
         <Button
-            variant="danger"
             size={size}
             onClick={() => onClick()}
         >
-            <Message msgId="gnhome.delete"/>
+            Staničenie
         </Button>
     );
 };
@@ -146,6 +149,7 @@ const ConnectedStationingButton = connect(
     })),
     {
         onClick: showStationingDialog,
+        
     }
 )((StationingButton));
 
@@ -158,23 +162,51 @@ export default createPlugin('StationingLocator', {
         }
     },
     epics: {
-        changeMousePointerOnStationingLocatorShow: (action$) => action$.ofType(SHOWSTATIONING).switchMap(() => {
-            return Rx.Observable.of(changeMousePointer('crosshair'));
+        changeMapInfoStateOnStationingLocatorShow: (action$) => action$.ofType(SHOWSTATIONING).switchMap(() => {
+            return Rx.Observable.of(changeMapInfoState(false));
         }),
+        changeMousePointerOnStationingLocatorShow: (action$, store) => action$.ofType("CHANGE_MOUSE_POINTER")
+            .filter(() => {
+                var state = store.getState()
+                if (state != null && state.map != null && state.map.present.mousePointer != 'crosshair' && state.stationingLocator != null && state.stationingLocator.enabled) {
+                    return true;
+                }
+                return false;
+            }
+            ).switchMap(() => {
+                return Rx.Observable.of(changeMousePointer('crosshair'));
+            }),
         changeMousePointerOnStationingLocatorHide: (action$) => action$.ofType(HIDESTATIONING).switchMap(() => {
-            return Rx.Observable.of(changeMousePointer('auto'));
+            return Rx.Observable.of(changeMousePointer('auto')).concat(Rx.Observable.of(changeMapInfoState(true)));
         }),
         hideMarkerOnStationingLocatorHide: (action$) => action$.ofType(HIDESTATIONING).switchMap(() => {
             return Rx.Observable.of(hideMapinfoMarker());
         }),
-        showMarkerOnClick: (action$) => action$.ofType('CLICK_ON_MAP').switchMap(() => {
-            return Rx.Observable.of(showMapinfoMarker());
-        }),
-        calculateStationing: (action$, store) => action$.ofType('CLICK_ON_MAP').switchMap(({point}) => {
-            const projection = projectionSelector(store.getState()).substr(5);
-            var url = `http://geonode.softec.sk/stationing/api/stationing?x=${point.rawPos[0]}&y=${point.rawPos[1]}&srid=${projection}&tableName=public.usek`;
-            return axios.get(url).then(response => changeStationing({point, response }));
-        })
+        showMarkerOnClick: (action$, store) => action$.ofType('CLICK_ON_MAP')
+            .filter(() => {
+                var state = store.getState()
+                if (state.stationingLocator != null && state.stationingLocator.enabled) {
+                    return true;
+                }
+                return false;
+            })
+            .switchMap(({point}) => {
+                const projection = projectionSelector(store.getState()).substr(5);
+                return Rx.Observable.of(clickPoint(point)).concat(Rx.Observable.of(showMapinfoMarker()));
+            }),
+        calculateStationing: (action$, store) => action$.ofType('CLICK_ON_MAP')
+            .filter(() => {
+                var state = store.getState()
+                if (state.stationingLocator != null && state.stationingLocator.enabled) {
+                    return true;
+                }
+                return false;
+            })
+            .switchMap(({point}) => {
+                const projection = projectionSelector(store.getState()).substr(5);
+                var url = `http://geonode.softec.sk/stationing/api/stationing?x=${point.rawPos[0]}&y=${point.rawPos[1]}&srid=${projection}&tableName=public.usek`;
+                return axios.get(url).then(response => changeStationing({point, response }));
+            })
     },
     reducers: {
         stationingLocator: reducer

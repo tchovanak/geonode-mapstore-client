@@ -953,12 +953,12 @@
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
                         },
                         {
-                            "type": "plugin",
-                            "name": "StationingLocator"
-                        },
-                        {
                             "type": "divider",
                             "authenticated": true
+                        },
+                        {
+                            "type": "plugin",
+                            "name": "StationingLocator"
                         },
                         {
                             "type": "plugin",
@@ -1752,12 +1752,12 @@
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
                         },
                         {
-                            "type": "plugin",
-                            "name": "StationingLocator"
-                        },
-                        {
                             "type": "divider",
                             "authenticated": true
+                        },
+                        {
+                            "type": "plugin",
+                            "name": "StationingLocator"
                         },
                         {
                             "type": "plugin",
