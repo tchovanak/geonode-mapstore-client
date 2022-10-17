@@ -77,6 +77,7 @@ const StationingLocatorPlugin = (props) => {
     const sections = stationing?.response?.data;
     const section = sections && sections.length > 0 ? sections[0] : null;
     const sectionName = section ? section.sectionName : "";
+    const roadNo = section ? section.roadNo : "";
     const sectionOffset = section ? " " + Math.round(section.offset) + " m" : "";
     const kmStationing = section ?  section.roadNo + " " + section.kmOffset.toFixed(1) + " km (DZ " + section.kmSign + ")" : "";
     return (<Dialog id="stationingDialog" style={{
@@ -100,7 +101,7 @@ const StationingLocatorPlugin = (props) => {
                 </tr>
                 <tr>
                     <td class="tg-zv4m">Úsekové staničenie:</td>
-                    <td class="tg-zv4m">{sectionName} {sectionOffset}</td>
+                    <td class="tg-zv4m">{roadNo} {sectionName} {sectionOffset}</td>
                 </tr>
                 <tr>
                     <td class="tg-zv4m">Km staničenie:</td>
@@ -127,6 +128,7 @@ const ConnectedStationingLocatorPlugin = compose(
 
 const StationingButton = ({
     onClick,
+    variant,
     size,
     resource
 }) => {
@@ -134,6 +136,7 @@ const StationingButton = ({
     return (
         <Button
             size={size}
+            variant={variant || "primary"}
             onClick={() => onClick()}
         >
             Staničenie

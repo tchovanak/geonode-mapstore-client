@@ -1,9 +1,11 @@
+#stationingDialog {
+    width: 500px;
+}
 
 .tg  {
     border-collapse:collapse;
     border-spacing:0;
-    margin:0px auto; 
-    width: 600px;
+    width: auto;
 }
 .tg td{
     border-color:black;
