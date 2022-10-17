@@ -2,6 +2,9 @@
   "name": "geonode-mapstore-client",
   "version": "4.0.0",
   "description": "MapStore 2 bundles specific to geonode framework",
+  "browser":{
+    "child_process": false
+    },
   "eslintConfig": {
     "extends": [
       "@mapstore/eslint-config-mapstore"
@@ -41,7 +44,7 @@
     "react-helmet": "6.1.0",
     "react-intl": "2.3.0",
     "three": "0.136.0",
-    "webpack": "^5.9.0"
+    "webpack": "^5.74.0"
   },
   "mapstore": {
     "output": "dist",
