@@ -128,10 +128,6 @@ export const plugins = {
         'MousePosition',
         () => import(/* webpackChunkName: 'plugins/mouse-position' */ '@mapstore/framework/plugins/MousePosition')
     ),
-    CRSSelectorPlugin: toLazyPlugin(
-        'CRSSelector',
-        () => import(/* webpackChunkName: 'plugins/crs-selector' */ '@mapstore/framework/plugins/CRSSelector')
-    ),
     StyleEditorPlugin: toLazyPlugin(
         'StyleEditor',
         () => import(/* webpackChunkName: 'plugins/style-editor' */ '@mapstore/framework/plugins/StyleEditor')
