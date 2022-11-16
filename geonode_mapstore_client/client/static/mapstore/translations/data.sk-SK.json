@@ -152,6 +152,8 @@
             "maintenanceFrequency": "Údržba",
             "language": "Jazyk",
             "purpose": "Určenie",
+            "abstract": "Abstrakt",
+            "owner": "Vlastník",
             "dataQuality": "Kvalita dát",
             "temporalExtent": "Časový rozsah",
             "spatialRepresentationType": "Typ priestorových dát",
