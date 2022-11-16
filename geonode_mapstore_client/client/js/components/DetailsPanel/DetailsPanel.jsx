@@ -295,27 +295,27 @@ function DetailsPanel({
             "value": validateDataType(resource?.title)
         },
         {
-            "label": "Abstract",
+            "label": "gnviewer.abstract",
             "value": validateDataType(resource?.raw_abstract)?.length > 100 ? <div>{validateDataType(resource?.raw_abstract)?.substring(0, 100)}{extraContent}{' '}<a className="read-more-link" onClick={() => setReadMore(!readMore) }>{linkName}</a></div> : validateDataType(resource?.raw_abstract)
         },
         {
-            "label": "Owner",
+            "label": "gnviewer.owner",
             "value": validateDataType(resource?.owner?.username) && <a href={`/people/profile/${resource?.owner?.username}/`}> {(resource?.owner?.first_name !== "" && resource?.owner?.last_name !== "" ) ? (resource?.owner?.first_name + " " + resource?.owner?.last_name) : resource?.owner?.username} </a>
         },
         {
-            "label": "Created",
+            "label": "gnviewer.created",
             "value": validateDataType(resource?.created) && moment(resource?.created).format('MMMM Do YYYY')
         },
         {
-            "label": "Published",
+            "label": "gnviewer.published",
             "value": validateDataType(resource?.date) && moment(resource?.date).format('MMMM Do YYYY')
         },
         {
-            "label": "Last Modified",
+            "label": "gnviewer.modified",
             "value": validateDataType(resource?.last_updated) && moment(resource?.last_updated).format('MMMM Do YYYY')
         },
         {
-            "label": "Resource Type",
+            "label": "gnviewer.resourceType",
             "value": validateDataType(resource?.resource_type) && <a href={formatHref({
                 pathname: '/search/filter/',
                 query: {
@@ -324,7 +324,7 @@ function DetailsPanel({
             })}>{resource?.resource_type}</a>
         },
         {
-            "label": "Category",
+            "label": "gnviewer.category",
             "value": validateDataType(resource.category?.identifier) && <a href={formatHref({
                 pathname: '/search/filter/',
                 query: {
@@ -333,7 +333,7 @@ function DetailsPanel({
             })}>{resource.category?.identifier}</a>
         },
         {
-            "label": "Keywords",
+            "label": "gnviewer.keywords",
             "value": validateDataType(resource?.keywords) && resource?.keywords?.map((map) => {
                 return (<a href={formatHref({
                     pathname: '/search/filter/',
@@ -344,7 +344,7 @@ function DetailsPanel({
             })
         },
         {
-            "label": "Regions",
+            "label": "gnviewer.regions",
             "value": validateDataType(resource?.regions) && resource?.regions?.map((map) => {
                 return (<a href={formatHref({
                     pathname: '/search/filter/',
@@ -359,51 +359,51 @@ function DetailsPanel({
 
     const extraItemsList = [
         {
-            "label": "Point of Contact",
+            "label": "gnviewer.pointOfContact",
             "value": <a href={`/messages/create/${resource?.poc?.pk}/`}> {(resource?.poc?.first_name !== "" && resource?.poc?.last_name !== "" ) ? (resource?.poc?.first_name + " " + resource?.poc?.last_name) : resource?.poc?.username} </a>
         },
         {
-            "label": "License",
+            "label": "gnviewer.license",
             "value": validateDataType(resource?.license?.name_long)
         },
         {
-            "label": "Attribution",
+            "label": "gnviewer.attribution",
             "value": validateDataType(resource?.attribution)
         },
         {
-            "label": "Restriction",
+            "label": "gnviewer.restriction",
             "value": validateDataType(resource?.restriction_code_type?.identifier)
         },
         {
-            "label": "Edition",
+            "label": "gnviewer.edition",
             "value": validateDataType(resource?.edition)
         },
         {
-            "label": "Maintenance Frequency",
+            "label": "gnviewer.maintenanceFrequency",
             "value": validateDataType(resource?.maintenance_frequency)
         },
         {
-            "label": "Language",
+            "label": "gnviewer.language",
             "value": validateDataType(resource?.language)
         },
         {
-            "label": "Purpose",
+            "label": "gnviewer.purpose",
             "value": validateDataType(resource?.raw_purpose)
         },
         {
-            "label": "Data Quality",
+            "label": "gnviewer.dataQuality",
             "value": validateDataType(resource?.raw_data_quality_statement)
         },
         {
-            "label": "Temporal extent",
+            "label": "gnviewer.temporalExtent",
             "value": (resource?.temporal_extent_start) ? resource?.temporal_extent_start + " - " : undefined  + (resource?.temporal_extent_end) ? resource?.temporal_extent_end : undefined
         },
         {
-            "label": "Spatial Representation Type",
+            "label": "gnviewer.spatialRepresentationType",
             "value": validateDataType(resource?.spatial_representation_type?.identifier)
         },
         {
-            "label": "Supplemental Information",
+            "label": "gnviewer.supplementalInformation",
             "value": validateDataType(resource?.raw_supplemental_information)
         }
     ];
