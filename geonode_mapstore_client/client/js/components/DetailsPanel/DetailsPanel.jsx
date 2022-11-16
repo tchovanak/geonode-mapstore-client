@@ -403,7 +403,7 @@ function DetailsPanel({
             "value": validateDataType(resource?.spatial_representation_type?.identifier)
         },
         {
-            "label": "gnviewer.supplementalInformation",
+            "label": "gnviewer.supplementalInfo",
             "value": validateDataType(resource?.raw_supplemental_information)
         }
     ];
