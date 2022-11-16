@@ -291,7 +291,7 @@ function DetailsPanel({
 
     const infoField = [
         {
-            "label": "Title",
+            "label": "gnviewer.title",
             "value": validateDataType(resource?.title)
         },
         {
