@@ -79,7 +79,8 @@ const StationingLocatorPlugin = (props) => {
     const sectionName = section ? section.sectionName : "";
     const roadNo = section ? section.roadNo : "";
     const sectionOffset = section ? " " + Math.round(section.offset) + " m" : "";
-    const kmStationing = section ?  section.roadNo + " " + section.kmOffset.toFixed(1) + " km (DZ " + section.kmSign + ")" : "";
+    const kmStationing = section ?  section.roadNo + " " + section.kmOffset?.toFixed(3) + " km (DZ " + (section.kmSign ? section.kmSign : "-") + ")" : "";
+    const cumStationing = section ?  section.roadNo + " " + section.cumOffset?.toFixed(3) + " km" : "";
     return (<Dialog id="stationingDialog" style={{
         ...style,
         display: enabled ? "block" : "none"
@@ -106,6 +107,10 @@ const StationingLocatorPlugin = (props) => {
                 <tr>
                     <td class="tg-zv4m">Km staničenie:</td>
                     <td class="tg-zv4m">{kmStationing}</td>
+                </tr>
+                <tr>
+                    <td class="tg-zv4m">Kumulatívne staničenie:</td>
+                    <td class="tg-zv4m">{cumStationing}</td>
                 </tr>
                 </tbody>
             </table>
@@ -207,7 +212,7 @@ export default createPlugin('StationingLocator', {
             })
             .switchMap(({point}) => {
                 const projection = projectionSelector(store.getState()).substr(5);
-                var url = `https://gis.rowes.sk/stationing/api/stationing?x=${point.rawPos[0]}&y=${point.rawPos[1]}&srid=${projection}&tableName=public.usek`;
+                var url = `https://gis.rowes.sk/stationing/api/stationing/xy-to-stationings?x=${point.rawPos[0]}&y=${point.rawPos[1]}`;
                 return axios.get(url).then(response => changeStationing({point, response }));
             })
     },
