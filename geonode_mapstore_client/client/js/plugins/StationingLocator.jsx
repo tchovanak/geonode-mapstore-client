@@ -207,7 +207,7 @@ export default createPlugin('StationingLocator', {
             })
             .switchMap(({point}) => {
                 const projection = projectionSelector(store.getState()).substr(5);
-                var url = `http://geonode.softec.sk/stationing/api/stationing?x=${point.rawPos[0]}&y=${point.rawPos[1]}&srid=${projection}&tableName=public.usek`;
+                var url = `https://gis.rowes.sk/stationing/api/stationing?x=${point.rawPos[0]}&y=${point.rawPos[1]}&srid=${projection}&tableName=public.usek`;
                 return axios.get(url).then(response => changeStationing({point, response }));
             })
     },
