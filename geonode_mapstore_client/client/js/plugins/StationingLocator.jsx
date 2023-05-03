@@ -79,8 +79,8 @@ const StationingLocatorPlugin = (props) => {
     const sectionName = section ? section.sectionName : "";
     const roadNo = section ? section.roadNo : "";
     const sectionOffset = section ? " " + Math.round(section.offset) + " m" : "";
-    const kmStationing = section ?  section.roadNo + " " + section.kmOffset?.toFixed(3) ?? "" + " km (DZ " + (section.kmSign ? section.kmSign : "-") + ")" : "";
-    const cumStationing = section ?  section.roadNo + " " + section.cumOffset?.toFixed(3) ?? "" + " km" : "";
+    const kmStationing = section && section.kmOffset != null ?  section.roadNo + " " + section.kmOffset?.toFixed(3) + " km (DZ " + (section.kmSign ? section.kmSign : "-") + ")" : "";
+    const cumStationing = section && section.cumOffset != null ?  section.roadNo + " " + section.cumOffset?.toFixed(3) + " km" : "";
     return (<Dialog id="stationingDialog" style={{
         ...style,
         display: enabled ? "block" : "none"
