@@ -958,10 +958,6 @@
                         },
                         {
                             "type": "plugin",
-                            "name": "StationingLocator"
-                        },
-                        {
-                            "type": "plugin",
                             "name": "Print"
                         },
                         {
@@ -1036,9 +1032,6 @@
             },
             {
                 "name": "DeleteResource"
-            },
-            {
-                "name": "StationingLocator"
             },
             {
                 "name": "Map",
@@ -2312,10 +2305,6 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
-                        },
-                        {
-                            "type": "plugin",
-                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2338,9 +2327,6 @@
             },
             {
                 "name": "DeleteResource"
-            },
-            {
-                "name": "StationingLocator"
             },
             {
                 "name": "GeoStory",
@@ -2501,10 +2487,6 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
-                        },
-                        {
-                            "type": "plugin",
-                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2531,9 +2513,6 @@
             },
             {
                 "name": "DeleteResource"
-            },
-            {
-                "name": "StationingLocator"
             },
             {
                 "name": "Save"
@@ -2621,9 +2600,6 @@
                             "type": "plugin",
                             "name": "DeleteResource",
                             "disableIf": "{!context.resourceHasPermission(state('gnResourceData'), 'delete_resourcebase')}"
-                        },
-                        {
-                            "name": "StationingLocator"
                         }
                     ],
                     "rightMenuItems": [
@@ -2646,9 +2622,6 @@
             },
             {
                 "name": "DeleteResource"
-            },
-            {
-                "name": "StationingLocator"
             },
             {
                 "name": "Save"
