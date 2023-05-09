@@ -669,7 +669,7 @@
             },
             "layoutWarning": "Nepovolené rozloženie"
         },
-        "backgroundSwither":{
+        "backgroundSwitcher":{
             "tooltip": "Vybrať pozadie"
         },
         "info":{
