@@ -2769,8 +2769,8 @@
             "title": "Pozícia myši"
           },
           "Print": {
-            "description": "Allows to print the current map with legend",
-            "title": "Print Tool"
+            "description": "Umožňuje tlač mapy s legendou.",
+            "title": "Tlač"
           },
           "Save": {
             "description": "Umožňuje uložiť zmeny na mape na serveri",
